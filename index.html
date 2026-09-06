@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Personal Gemini Journal</title>
+    <meta name="description" content="A private journal with Reflection Lenses that remembers your story over time while keeping you in full control of your memory and privacy." />
+    <meta property="og:title" content="Personal Gemini Journal" />
+    <meta property="og:description" content="A private journal with Reflection Lenses that remembers your story over time while keeping you in full control of your memory and privacy." />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300..800;1,9..40,300..800&family=Lora:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
+    <script>
+      // Gracefully prevent unhandled rejections from development Vite HMR WebSocket drops in preview proxies
+      window.addEventListener('unhandledrejection', function (event) {
+        var reason = event && event.reason;
+        var msg = (reason && (reason.message || String(reason))) || '';
+        if (typeof msg === 'string' && (msg.includes('WebSocket closed without opened') || msg.includes('failed to connect to websocket'))) {
+          event.preventDefault();
+        }
+      });
+    </script>
+  </head>
+  <body class="bg-[#faf8f5] text-[#2c2825] antialiased selection:bg-amber-100 selection:text-amber-900">
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
+

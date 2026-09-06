@@ -1,0 +1,92 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // Helper functions for hardened security and owner isolation
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+
+    function isOwner(userId) {
+      return isAuthenticated() && request.auth.uid == userId;
+    }
+
+    function isValidMemoryContract(contract) {
+      return contract in ['PAGE_ONLY', 'STORE_ONLY', 'MAY_CONNECT', 'IMPORTANT_MEMORY'];
+    }
+
+    function isValidLens(lens) {
+      return lens in ['PERSONAL', 'PROFESSIONAL', 'WOMEN_AND_LIFE', 'IDENTITY_AND_GROWTH'];
+    }
+
+    // User Profile Document (client allowed to read and write own profile/preferences)
+    match /users/{userId} {
+      allow read, write: if isOwner(userId);
+
+      // Journal Entries subcollection with contract and schema validation
+      match /entries/{entryId} {
+        allow read, delete: if isOwner(userId);
+        
+        allow create, update: if isOwner(userId) &&
+          // Validate memory contract if provided
+          (!('memoryContract' in request.resource.data) || isValidMemoryContract(request.resource.data.memoryContract)) &&
+          // Validate reflection lens if provided
+          (!('lens' in request.resource.data) || isValidLens(request.resource.data.lens)) &&
+          // Validate content bounds
+          (!('content' in request.resource.data) || (request.resource.data.content is string && request.resource.data.content.size() <= 100000));
+
+        // Subcollection of reflection messages under an entry
+        match /messages/{messageId} {
+          allow read, write: if isOwner(userId);
+        }
+      }
+
+      // Server-derived collections: client read-only, client write forbidden
+      // Privileged writes are performed exclusively by Cloud Run Admin SDK / service account
+      match /embeddings/{docId} {
+        allow read: if isOwner(userId);
+        allow write: if false;
+      }
+
+      match /lifeThreads/{threadId} {
+        allow read: if isOwner(userId);
+        allow write: if false;
+      }
+
+      match /unfinishedLoops/{loopId} {
+        allow read: if isOwner(userId);
+        allow write: if false;
+      }
+
+      match /aiMemory/{memoryId} {
+        allow read: if isOwner(userId);
+        allow write: if false;
+      }
+
+      match /thenNow/{shiftId} {
+        allow read: if isOwner(userId);
+        allow write: if false;
+      }
+
+      match /wins/{winId} {
+        allow read: if isOwner(userId);
+        allow write: if false;
+      }
+
+      match /weeklyReflections/{reflectionId} {
+        allow read: if isOwner(userId);
+        allow write: if false;
+      }
+
+      match /emailLogs/{logId} {
+        allow read: if isOwner(userId);
+        allow write: if false;
+      }
+    }
+
+    // Default deny all other paths (broad write bypass strictly eliminated)
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}
