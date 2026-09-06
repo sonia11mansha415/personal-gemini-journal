@@ -1,0 +1,21 @@
+# Files excluded from Cloud Run source uploads
+.git/
+.github/
+.env
+.env.*
+node_modules/
+dist/
+build/
+coverage/
+.firebase/
+*.log
+logs/
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+.agents/
+
+# Local-only tests and documentation are not needed in the runtime image source build.
+tests/
+docs/
