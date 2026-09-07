@@ -1,3 +1,7 @@
+<a id="top"></a>
+
+[🏠 Project Home](../README.md) · [🏗️ Architecture](./ARCHITECTURE.md) · [🔐 Security & Privacy](./SECURITY-AND-PRIVACY.md) · [🔥 Firestore](./FIRESTORE.md)
+
 # Cloud Run Deployment Guide
 
 This guide reproduces Personal Gemini Journal on Google Cloud Run from the repository source.
@@ -207,3 +211,7 @@ Add the Cloud Run hostname to Firebase Authentication Authorized Domains. Mobile
 ### Maps show but place lookup/reverse geocoding fails
 
 Confirm the browser key has all three required APIs enabled and HTTP referrer restrictions include the exact Cloud Run origin.
+
+---
+
+[🏠 Project Home](../README.md) · [🏗️ Architecture](./ARCHITECTURE.md) · [🔐 Security & Privacy](./SECURITY-AND-PRIVACY.md) · [🔥 Firestore](./FIRESTORE.md) · [↑ Back to top](#top)

@@ -1,3 +1,7 @@
+<a id="top"></a>
+
+[🏠 Project Home](../README.md) · [🏗️ Architecture](./ARCHITECTURE.md) · [🔐 Security & Privacy](./SECURITY-AND-PRIVACY.md) · [🚀 Deployment](./DEPLOYMENT.md)
+
 # Firestore Data Model and Security Rules
 
 ## Database selection
@@ -99,3 +103,7 @@ For another Firebase project:
 6. Create a Cloud Run service account with `roles/datastore.user`.
 7. Deploy the Cloud Run service with that runtime identity.
 8. Add the Cloud Run hostname to Firebase Authentication Authorized Domains.
+
+---
+
+[🏠 Project Home](../README.md) · [🏗️ Architecture](./ARCHITECTURE.md) · [🔐 Security & Privacy](./SECURITY-AND-PRIVACY.md) · [🚀 Deployment](./DEPLOYMENT.md) · [↑ Back to top](#top)
