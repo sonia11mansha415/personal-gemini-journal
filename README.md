@@ -396,8 +396,7 @@ For the full Cloud Run deployment, IAM, Secret Manager, Firebase Authorized Doma
 
 The final product walkthrough and build story were published on LinkedIn as part of the Ideathon submission, alongside the public source repository and the deployed Cloud Run prototype.
 
-- **Repository:** https://github.com/sonia11mansha415/personal-gemini-journal
-- **LinkedIn project post / activity:** https://www.linkedin.com/in/sonia11mansha415/recent-activity/all/
+- **LinkedIn project post:** https://lnkd.in/p/gMbganBW
 
 <img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif" width="100%" alt="section divider" />
 
